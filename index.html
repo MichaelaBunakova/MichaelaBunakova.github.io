@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Name — Researcher</title>
+<meta name="description" content="Academic portfolio of [Your Name], PhD candidate in [Your Field].">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #FAFAF8;
+    --surface: #F3F1EC;
+    --text: #1C1C1A;
+    --muted: #6B6A65;
+    --accent: #1A3A5C;
+    --accent-light: #E6F1FB;
+    --border: rgba(28,28,26,0.1);
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+    --mono: 'DM Mono', monospace;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.7; }
+  a { color: inherit; text-decoration: none; }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(250,250,248,0.88);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 3rem; height: 56px;
+  }
+  .nav-name { font-family: var(--mono); font-size: 13px; font-weight: 500; letter-spacing: 0.02em; color: var(--accent); }
+  .nav-links { display: flex; gap: 2rem; }
+  .nav-links a { font-size: 13px; color: var(--muted); letter-spacing: 0.03em; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--text); }
+  .hamburger { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 4px; }
+  .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--text); transition: all 0.3s; }
+
+  #about {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 7rem 3rem 4rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .tag {
+    display: inline-block;
+    font-family: var(--mono); font-size: 11px; font-weight: 500;
+    color: var(--accent); background: var(--accent-light);
+    padding: 4px 10px; border-radius: 4px; letter-spacing: 0.06em;
+    margin-bottom: 2rem;
+  }
+  h1 { font-family: var(--serif); font-size: clamp(2.4rem, 6vw, 4.2rem); line-height: 1.1; font-weight: 400; margin-bottom: 1.5rem; }
+  h1 em { font-style: italic; color: var(--accent); }
+  .hero-bio { font-size: 17px; color: var(--muted); max-width: 560px; line-height: 1.75; margin-bottom: 2.5rem; }
+  .hero-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn {
+    display: inline-block; padding: 10px 20px;
+    font-size: 13px; font-weight: 500; letter-spacing: 0.02em;
+    border-radius: 6px; transition: all 0.2s; cursor: pointer;
+  }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover { background: #0f2740; }
+  .btn-outline { border: 1px solid var(--border); color: var(--muted); background: transparent; }
+  .btn-outline:hover { border-color: var(--text); color: var(--text); }
+  .stats { display: flex; gap: 3rem; margin-top: 4rem; padding-top: 2.5rem; border-top: 1px solid var(--border); flex-wrap: wrap; }
+  .stat-num { font-family: var(--serif); font-size: 2.2rem; color: var(--text); line-height: 1; }
+  .stat-label { font-size: 12px; color: var(--muted); margin-top: 4px; letter-spacing: 0.03em; }
+
+  section { padding: 5rem 3rem; max-width: 900px; margin: 0 auto; }
+  .section-header { display: flex; align-items: baseline; gap: 1.5rem; margin-bottom: 3rem; }
+  .section-label { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.08em; white-space: nowrap; }
+  .section-divider { flex: 1; height: 1px; background: var(--border); }
+  h2 { font-family: var(--serif); font-size: 1.9rem; font-weight: 400; }
+
+  .pub-list { display: flex; flex-direction: column; }
+  .pub-item {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--border);
+    display: grid; grid-template-columns: 48px 1fr; gap: 1.5rem;
+    align-items: start;
+  }
+  .pub-year { font-family: var(--mono); font-size: 12px; color: var(--muted); padding-top: 3px; }
+  .pub-title { font-size: 15px; font-weight: 500; color: var(--text); margin-bottom: 4px; line-height: 1.45; }
+  .pub-meta { font-size: 13px; color: var(--muted); line-height: 1.5; }
+  .pub-journal { font-style: italic; }
+  .pub-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+  .pub-tag {
+    font-size: 11px; font-family: var(--mono);
+    padding: 2px 8px; border-radius: 3px;
+    border: 1px solid var(--border); color: var(--muted);
+  }
+  .pub-tag.working { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
+
+  .cv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+  .cv-section h3 { font-family: var(--serif); font-size: 1.1rem; font-weight: 400; margin-bottom: 1.25rem; color: var(--accent); }
+  .cv-item { margin-bottom: 1.25rem; }
+  .cv-item-title { font-size: 14px; font-weight: 500; }
+  .cv-item-sub { font-size: 13px; color: var(--muted); }
+  .cv-item-year { font-family: var(--mono); font-size: 11px; color: var(--muted); margin-bottom: 2px; }
+
+  .proj-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .proj-card {
+    border: 1px solid var(--border); border-radius: 8px;
+    padding: 1.5rem; background: var(--surface);
+    transition: border-color 0.2s;
+  }
+  .proj-card:hover { border-color: rgba(26,58,92,0.35); }
+  .proj-icon { font-size: 20px; margin-bottom: 1rem; }
+  .proj-title { font-size: 14px; font-weight: 500; margin-bottom: 6px; }
+  .proj-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+  .proj-link { display: inline-block; margin-top: 12px; font-size: 12px; font-family: var(--mono); color: var(--accent); }
+  .proj-link:hover { text-decoration: underline; }
+
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+  .contact-intro { font-size: 16px; color: var(--muted); line-height: 1.75; }
+  .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-link {
+    display: flex; align-items: center; gap: 12px;
+    padding: 1rem 1.25rem; border: 1px solid var(--border);
+    border-radius: 8px; font-size: 13px; color: var(--text);
+    transition: all 0.2s;
+  }
+  .contact-link:hover { border-color: var(--accent); color: var(--accent); }
+  .cl-label { font-weight: 500; font-size: 13px; }
+  .cl-sub { font-size: 12px; color: var(--muted); }
+
+  footer {
+    border-top: 1px solid var(--border); padding: 2rem 3rem;
+    text-align: center; font-size: 12px; color: var(--muted);
+    font-family: var(--mono);
+  }
+
+  @media (max-width: 700px) {
+    nav { padding: 0 1.5rem; }
+    .nav-links { display: none; flex-direction: column; position: fixed; top: 56px; left: 0; right: 0; background: var(--bg); border-bottom: 1px solid var(--border); padding: 1.5rem; gap: 1.25rem; }
+    .nav-links.open { display: flex; }
+    .hamburger { display: flex; }
+    #about { padding: 6rem 1.5rem 3rem; }
+    section { padding: 3.5rem 1.5rem; }
+    .cv-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .proj-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .stats { gap: 2rem; }
+    footer { padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-name">Your Name</span>
+  <div class="nav-links" id="nav-links">
+    <a href="#about" onclick="closeMenu()">about</a>
+    <a href="#research" onclick="closeMenu()">research</a>
+    <a href="#cv" onclick="closeMenu()">cv</a>
+    <a href="#projects" onclick="closeMenu()">projects</a>
+    <a href="#contact" onclick="closeMenu()">contact</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="tag">RESEARCHER · ECONOMIST · METHODOLOGIST</div>
+  <h1>Studying <em>policy,</em><br>data, and<br>decision-making.</h1>
+  <p class="hero-bio">PhD candidate in [Your Field] at [Your University]. My research sits at the intersection of [Topic A] and [Topic B], with a focus on causal inference and applied microeconomics.</p>
+  <div class="hero-links">
+    <a href="#research" class="btn btn-primary">View publications</a>
+    <a href="#contact" class="btn btn-outline">Get in touch</a>
+    <a href="cv.pdf" class="btn btn-outline" target="_blank" rel="noopener">Download CV</a>
+  </div>
+  <div class="stats">
+    <div>
+      <div class="stat-num">12</div>
+      <div class="stat-label">Publications</div>
+    </div>
+    <div>
+      <div class="stat-num">4</div>
+      <div class="stat-label">Working papers</div>
+    </div>
+    <div>
+      <div class="stat-num">5</div>
+      <div class="stat-label">Years of research</div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section id="research">
+  <div class="section-header">
+    <span class="section-label">RESEARCH & PUBLICATIONS</span>
+    <div class="section-divider"></div>
+  </div>
+  <h2>Selected work</h2>
+  <br>
+  <div class="pub-list">
+    <div class="pub-item">
+      <div class="pub-year">2024</div>
+      <div>
+        <div class="pub-title">Title of Your Most Recent Paper: A Subtitle That Explains the Contribution</div>
+        <div class="pub-meta">With Co-Author A &amp; Co-Author B · <span class="pub-journal">Journal of [Your Field]</span>, 42(3), 101–128</div>
+        <div class="pub-tags">
+          <span class="pub-tag">causal inference</span>
+          <span class="pub-tag">panel data</span>
+        </div>
+      </div>
+    </div>
+    <div class="pub-item">
+      <div class="pub-year">2023</div>
+      <div>
+        <div class="pub-title">Second Paper Title: Examining [Phenomenon] Using [Method]</div>
+        <div class="pub-meta">With Co-Author C · <span class="pub-journal">American Economic Review</span>, 113(5), 200–244</div>
+        <div class="pub-tags">
+          <span class="pub-tag">health policy</span>
+          <span class="pub-tag">difference-in-differences</span>
+        </div>
+      </div>
+    </div>
+    <div class="pub-item">
+      <div class="pub-year">2023</div>
+      <div>
+        <div class="pub-title">Working Paper Title: Preliminary Evidence on [Topic]</div>
+        <div class="pub-meta">Solo-authored · Under review at <span class="pub-journal">Review of Economics and Statistics</span></div>
+        <div class="pub-tags">
+          <span class="pub-tag working">working paper</span>
+          <span class="pub-tag">stata</span>
+          <span class="pub-tag">survey data</span>
+        </div>
+      </div>
+    </div>
+    <div class="pub-item">
+      <div class="pub-year">2022</div>
+      <div>
+        <div class="pub-title">Earlier Publication: Evidence from a Natural Experiment</div>
+        <div class="pub-meta">With Co-Author D · <span class="pub-journal">Journal of Public Economics</span>, 205, 104577</div>
+        <div class="pub-tags">
+          <span class="pub-tag">regression discontinuity</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CV -->
+<section id="cv">
+  <div class="section-header">
+    <span class="section-label">CURRICULUM VITAE</span>
+    <div class="section-divider"></div>
+  </div>
+  <h2>Background</h2>
+  <br>
+  <div class="cv-grid">
+    <div class="cv-section">
+      <h3>Education</h3>
+      <div class="cv-item">
+        <div class="cv-item-year">2020 – present</div>
+        <div class="cv-item-title">Ph.D. in [Your Field]</div>
+        <div class="cv-item-sub">Your University</div>
+      </div>
+      <div class="cv-item">
+        <div class="cv-item-year">2018 – 2020</div>
+        <div class="cv-item-title">M.Sc. in [Related Field]</div>
+        <div class="cv-item-sub">Another University</div>
+      </div>
+      <div class="cv-item">
+        <div class="cv-item-year">2015 – 2018</div>
+        <div class="cv-item-title">B.A. in Economics</div>
+        <div class="cv-item-sub">Undergraduate Institution</div>
+      </div>
+    </div>
+    <div class="cv-section">
+      <h3>Positions</h3>
+      <div class="cv-item">
+        <div class="cv-item-year">2022 – present</div>
+        <div class="cv-item-title">Graduate Research Fellow</div>
+        <div class="cv-item-sub">Research Center / Lab Name</div>
+      </div>
+      <div class="cv-item">
+        <div class="cv-item-year">2021</div>
+        <div class="cv-item-title">Summer Intern</div>
+        <div class="cv-item-sub">Policy Organization / Institute</div>
+      </div>
+    </div>
+    <div class="cv-section">
+      <h3>Awards & grants</h3>
+      <div class="cv-item">
+        <div class="cv-item-year">2023</div>
+        <div class="cv-item-title">Fellowship Name</div>
+        <div class="cv-item-sub">Granting Organization</div>
+      </div>
+      <div class="cv-item">
+        <div class="cv-item-year">2022</div>
+        <div class="cv-item-title">Research Grant ($XX,000)</div>
+        <div class="cv-item-sub">Funding Agency</div>
+      </div>
+    </div>
+    <div class="cv-section">
+      <h3>Teaching</h3>
+      <div class="cv-item">
+        <div class="cv-item-year">2023</div>
+        <div class="cv-item-title">Teaching Assistant — Econometrics</div>
+        <div class="cv-item-sub">Your University</div>
+      </div>
+      <div class="cv-item">
+        <div class="cv-item-year">2022</div>
+        <div class="cv-item-title">Guest Lecturer — Applied Micro</div>
+        <div class="cv-item-sub">Your University</div>
+      </div>
+    </div>
+  </div>
+  <br><br>
+  <a href="cv.pdf" target="_blank" rel="noopener" class="btn btn-outline">Download full CV (PDF)</a>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header">
+    <span class="section-label">PROJECTS & TOOLS</span>
+    <div class="section-divider"></div>
+  </div>
+  <h2>Other work</h2>
+  <br>
+  <div class="proj-grid">
+    <div class="proj-card">
+      <div class="proj-icon">📦</div>
+      <div class="proj-title">Stata Package: [pkgname]</div>
+      <div class="proj-desc">A utility for [describe what it does]. Simplifies [workflow] for applied researchers using administrative data.</div>
+      <a href="#" class="proj-link">→ View on GitHub</a>
+    </div>
+    <div class="proj-card">
+      <div class="proj-icon">📊</div>
+      <div class="proj-title">Dataset: [Name]</div>
+      <div class="proj-desc">Publicly available panel dataset covering [topic] across [X] countries from [year] to [year].</div>
+      <a href="#" class="proj-link">→ Download data</a>
+    </div>
+    <div class="proj-card">
+      <div class="proj-icon">📝</div>
+      <div class="proj-title">Policy Brief: [Title]</div>
+      <div class="proj-desc">A non-technical summary of findings from [paper], prepared for [audience/organization].</div>
+      <a href="#" class="proj-link">→ Read brief</a>
+    </div>
+    <div class="proj-card">
+      <div class="proj-icon">🎓</div>
+      <div class="proj-title">Course Materials</div>
+      <div class="proj-desc">Slides, code, and problem sets from [Course Name], an advanced methods course taught at [Institution].</div>
+      <a href="#" class="proj-link">→ Access materials</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header">
+    <span class="section-label">CONTACT</span>
+    <div class="section-divider"></div>
+  </div>
+  <h2>Get in touch</h2>
+  <br>
+  <div class="contact-grid">
+    <div>
+      <p class="contact-intro">I'm happy to hear from fellow researchers, students, or policy practitioners. I typically respond within 2–3 business days.</p>
+      <br><br>
+      <p style="font-size:13px; color:var(--muted); line-height:1.8">
+        Office: Room 000, Building Name<br>
+        Department of [Field]<br>
+        Your University, City, Country
+      </p>
+    </div>
+    <div class="contact-links">
+      <a href="mailto:you@university.edu" class="contact-link">
+        <span style="font-size:18px">✉</span>
+        <div>
+          <div class="cl-label">Email</div>
+          <div class="cl-sub">you@university.edu</div>
+        </div>
+      </a>
+      <a href="https://scholar.google.com" target="_blank" rel="noopener" class="contact-link">
+        <span style="font-size:18px">🎓</span>
+        <div>
+          <div class="cl-label">Google Scholar</div>
+          <div class="cl-sub">View full publication list</div>
+        </div>
+      </a>
+      <a href="https://twitter.com/yourhandle" target="_blank" rel="noopener" class="contact-link">
+        <span style="font-size:18px">𝕏</span>
+        <div>
+          <div class="cl-label">Twitter / X</div>
+          <div class="cl-sub">@yourhandle</div>
+        </div>
+      </a>
+      <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener" class="contact-link">
+        <span style="font-size:18px">in</span>
+        <div>
+          <div class="cl-label">LinkedIn</div>
+          <div class="cl-sub">Professional profile</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Your Name · Last updated May 2026
+</footer>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('nav-links').classList.toggle('open');
+  }
+  function closeMenu() {
+    document.getElementById('nav-links').classList.remove('open');
+  }
+  document.addEventListener('click', function(e) {
+    const nav = document.querySelector('nav');
+    if (!nav.contains(e.target)) closeMenu();
+  });
+</script>
+
+</body>
+</html>
