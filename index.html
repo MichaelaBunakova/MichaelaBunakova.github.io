@@ -5,6 +5,95 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Michaela Bunakova — Sociologist & Researcher</title>
 <meta name="description" content="Academic portfolio of Michaela Bunakova, PhD Candidate in Sociology at McGill University.">
+<meta property="og:title" content="Michaela Bunakova — Sociologist & Researcher">
+<meta property="og:description" content="PhD Candidate in Sociology at McGill University. Research at the intersection of social epidemiology and health policy in Canada.">
+<meta property="og:type" content="profile">
+<meta property="og:url" content="https://MichaelaBunakova.github.io">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Michaela Bunakova — Sociologist & Researcher">
+<meta name="twitter:description" content="PhD Candidate in Sociology at McGill University. Research at the intersection of social epidemiology and health policy in Canada.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Michaela Bunakova",
+  "honorificSuffix": "MSc., PhD(c)",
+  "url": "https://MichaelaBunakova.github.io",
+  "email": "michaela.bunakova@mail.mcgill.ca",
+  "telephone": "+14386307980",
+  "image": "https://MichaelaBunakova.github.io/photo.jpg",
+  "jobTitle": "PhD Candidate",
+  "description": "PhD Candidate in Sociology at McGill University specializing in social epidemiology, demographic methods, and health policy. Wolfe Chair 2025/2026 Fellow funded by the FRQSC Doctoral Research Grant.",
+  "affiliation": {
+    "@type": "Organization",
+    "name": "McGill University",
+    "url": "https://www.mcgill.ca",
+    "department": "Department of Sociology"
+  },
+  "alumniOf": [
+    {
+      "@type": "CollegeOrUniversity",
+      "name": "McGill University",
+      "url": "https://www.mcgill.ca"
+    },
+    {
+      "@type": "CollegeOrUniversity",
+      "name": "University of Oxford",
+      "url": "https://www.ox.ac.uk"
+    },
+    {
+      "@type": "CollegeOrUniversity",
+      "name": "University of Manchester",
+      "url": "https://www.manchester.ac.uk"
+    }
+  ],
+  "knowsAbout": [
+    "Social Epidemiology",
+    "Health Inequalities",
+    "Demographic Methods",
+    "Medical Sociology",
+    "Health Policy",
+    "Causal Inference",
+    "Stata",
+    "Quantitative Methods"
+  ],
+  "knowsLanguage": ["English", "Slovak", "Czech", "French", "German", "Russian"],
+  "hasCredential": [
+    {
+      "@type": "EducationalOccupationalCredential",
+      "credentialCategory": "PhD (candidate)",
+      "recognizedBy": { "@type": "CollegeOrUniversity", "name": "McGill University" }
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      "credentialCategory": "MSc Epidemiology",
+      "recognizedBy": { "@type": "CollegeOrUniversity", "name": "McGill University" }
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      "credentialCategory": "MSc Comparative Social Policy",
+      "recognizedBy": { "@type": "CollegeOrUniversity", "name": "University of Oxford" }
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      "credentialCategory": "BA (Hons) Politics, Philosophy, Economics",
+      "recognizedBy": { "@type": "CollegeOrUniversity", "name": "University of Manchester" }
+    }
+  ],
+  "award": [
+    "Anthony H. Hampson Award, McGill University, 2025",
+    "Wolfe Graduate Fellowship, McGill University, 2025",
+    "Emerging Scholar Grant, QUICSS, 2024",
+    "Best Student Paper Award, Canadian Population Society, 2023",
+    "Congress Graduate Merit Award, Federation for the Humanities and Social Sciences, 2023",
+    "FRQSC Doctoral Research Grant, 2022",
+    "Oswald Hall Prize, McGill University, 2021"
+  ],
+  "sameAs": [
+    "https://ora.ox.ac.uk/objects/uuid:4eae0276-03c8-40de-beaa-c195779ecba5"
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
@@ -71,10 +160,10 @@
   .btn-outline:hover { border-color: var(--text); color: var(--text); }
 
   .hero-photo-wrap {
-    width: 300px; flex-shrink: 0;
+    width: 220px; flex-shrink: 0;
   }
   .hero-photo {
-    width: 300px; height: 380px;
+    width: 220px; height: 280px;
     object-fit: cover; object-position: center top;
     border-radius: 12px;
     border: 1px solid var(--border);
@@ -148,6 +237,40 @@
     border: 1px solid var(--border); color: var(--muted); margin-left: 6px; vertical-align: middle;
   }
 
+  /* TEACHING */
+  .teaching-subsection { margin-bottom: 3rem; }
+  .teaching-subsection h3 { font-family: var(--serif); font-size: 1.15rem; font-weight: 400; color: var(--accent); margin-bottom: 1.25rem; }
+  .teaching-card {
+    border: 1px solid var(--border); border-radius: 8px;
+    padding: 1.25rem 1.5rem; margin-bottom: 1rem;
+    background: var(--surface);
+    display: grid; grid-template-columns: 1fr auto; gap: 1rem; align-items: start;
+  }
+  .teaching-course { font-size: 14px; font-weight: 500; margin-bottom: 3px; }
+  .teaching-meta { font-size: 13px; color: var(--muted); }
+  .teaching-stats { display: flex; gap: 1rem; margin-top: 10px; flex-wrap: wrap; }
+  .teaching-stat {
+    font-size: 12px; font-family: var(--mono);
+    padding: 3px 10px; border-radius: 4px;
+    background: var(--accent-light); color: var(--accent);
+    border: 1px solid rgba(26,58,92,0.15);
+  }
+  .eval-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 12px; font-family: var(--mono); color: var(--accent);
+    padding: 6px 12px; border: 1px solid rgba(26,58,92,0.25);
+    border-radius: 5px; white-space: nowrap; transition: all 0.2s;
+    flex-shrink: 0; align-self: center;
+  }
+  .eval-link:hover { background: var(--accent-light); }
+  .ta-item {
+    padding: 1rem 0; border-bottom: 1px solid var(--border);
+    display: grid; grid-template-columns: 48px 1fr; gap: 1.5rem;
+  }
+  .ta-year { font-family: var(--mono); font-size: 12px; color: var(--muted); padding-top: 2px; }
+  .ta-course { font-size: 14px; font-weight: 500; margin-bottom: 2px; }
+  .ta-meta { font-size: 13px; color: var(--muted); }
+
   /* CONTACT */
   .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
   .contact-intro { font-size: 16px; color: var(--muted); line-height: 1.75; }
@@ -195,6 +318,7 @@
     <a href="#awards" onclick="closeMenu()">awards</a>
     <a href="#research" onclick="closeMenu()">research</a>
     <a href="#cv" onclick="closeMenu()">cv</a>
+    <a href="#teaching" onclick="closeMenu()">teaching</a>
     <a href="#presentations" onclick="closeMenu()">presentations</a>
     <a href="#contact" onclick="closeMenu()">contact</a>
   </div>
@@ -468,6 +592,77 @@
   <a href="CV_Bunakova_2026.pdf" target="_blank" rel="noopener" class="btn btn-outline">Download full CV (PDF)</a>
 </section>
 
+<!-- TEACHING -->
+<section id="teaching">
+  <div class="section-header">
+    <span class="section-label">TEACHING</span>
+    <div class="section-divider"></div>
+  </div>
+  <h2>Teaching experience</h2>
+  <br>
+
+  <div class="teaching-subsection">
+    <h3>Course Lectureship</h3>
+
+    <div class="teaching-card">
+      <div>
+        <div class="teaching-course">SOCI335: Sociology of Aging and Life Course</div>
+        <div class="teaching-meta">Fall 2023 · McGill University · 84 students · Response rate: 79.8%</div>
+        <div class="teaching-stats">
+          <span class="teaching-stat">100% rate instructor as excellent</span>
+          <span class="teaching-stat">89.6% rate course as excellent</span>
+          <span class="teaching-stat">Instructor mean: 4.6 / 5</span>
+        </div>
+      </div>
+      <a href="eval_SOCI335_Fall2023.pdf" target="_blank" rel="noopener" class="eval-link">
+        📄 Evaluation report
+      </a>
+    </div>
+
+    <div class="teaching-card">
+      <div>
+        <div class="teaching-course">SOCI335: Sociology of Aging and Life Course</div>
+        <div class="teaching-meta">Fall 2022 · McGill University · 82 students · Response rate: 85.4%</div>
+        <div class="teaching-stats">
+          <span class="teaching-stat">97.1% rate instructor as excellent</span>
+          <span class="teaching-stat">82.8% rate course as excellent</span>
+          <span class="teaching-stat">Instructor mean: 4.7 / 5</span>
+        </div>
+      </div>
+      <a href="eval_SOCI335_Fall2022.pdf" target="_blank" rel="noopener" class="eval-link">
+        📄 Evaluation report
+      </a>
+    </div>
+  </div>
+
+  <div class="teaching-subsection">
+    <h3>Teaching Assistantship</h3>
+    <div class="pub-list">
+      <div class="ta-item">
+        <div class="ta-year">2023</div>
+        <div>
+          <div class="ta-course">SOCI309: Health and Illness</div>
+          <div class="ta-meta">Winter 2023 · McGill University</div>
+        </div>
+      </div>
+      <div class="ta-item">
+        <div class="ta-year">2022</div>
+        <div>
+          <div class="ta-course">SOCI304: Sociology of Welfare State</div>
+          <div class="ta-meta">Fall 2022 · McGill University</div>
+        </div>
+      </div>
+      <div class="ta-item">
+        <div class="ta-year">2021</div>
+        <div>
+          <div class="ta-course">SOCI366: Neighbourhoods and Inequality</div>
+          <div class="ta-meta">Fall 2021 · McGill University</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- PRESENTATIONS -->
 <section id="presentations">
   <div class="section-header">
@@ -476,14 +671,6 @@
   </div>
   <h2>Presentations</h2>
   <br>
- <div class="conf-list">
-    <div class="conf-item">
-      <div class="conf-year">2026</div>
-      <div>
-        <div class="conf-title">'For Better or for Health? Medical Knowledge Spillovers and Health Inequality among socioeconomically-advantaged European Partnerships' <span class="conf-type">oral</span></div>
-        <div class="conf-meta">American Sociological Association (ASA) Conference · New York</div>
-      </div>
-    </div>
   <div class="conf-list">
     <div class="conf-item">
       <div class="conf-year">2023</div>
@@ -530,7 +717,7 @@
     <div class="conf-item">
       <div class="conf-year">2020</div>
       <div>
-        <div class="conf-title">Dyadic health spillovers by educational expertise in Europe under different macro policy contexts' <span class="conf-type">poster</span></div>
+        <div class="conf-title">'Marry a doctor, live healthier': A quantitative study of family health influence in Europe under different macro policy contexts' <span class="conf-type">poster</span></div>
         <div class="conf-meta">EBOH Research Day · McGill University, Canada</div>
       </div>
     </div>
@@ -547,7 +734,7 @@
   <br>
   <div class="contact-grid">
     <div>
-      <p class="contact-intro">I'm alwats happy to hear from fellow researchers, students, or policy practitioners. If you have any questions or would like to connect, please don't hesitate to send me an email. </p>
+      <p class="contact-intro">I'm happy to hear from fellow researchers, students, or policy practitioners. I typically respond within a few business days.</p>
       <br><br>
       <p style="font-size:13px; color:var(--muted); line-height:1.8">
         Department of Sociology<br>
@@ -578,19 +765,10 @@
           <div class="cl-sub">MSc thesis</div>
         </div>
       </a>
-
-     <a href="https://www.linkedin.com/in/michaelabunakova/" target="_blank" rel="noopener" class="contact-link">
-  <span style="font-size:18px">in</span>
-  <div>
-    <div class="cl-label">LinkedIn</div>
-    <div class="cl-sub">linkedin.com/in/michaelabunakova</div>
-  </div>
-</a>
-     
     </div>
   </div>
 </section>
- 
+
 <footer>
   © 2026 Michaela Bunakova · Department of Sociology, McGill University · Last updated May 2026
 </footer>
